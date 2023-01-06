@@ -15,6 +15,9 @@ spring:
           '[/**]':
             allowedOrigins: "*"  #运行所有请求
             allowedMethods: "*"  #允许所有请求方式
+            allowedHeaders: "*"  #允许所有请求头，包括json跨域
+            allowCredentials: true  #允许带一些安全标志跨域  比如:Cookie
+
 
 
 
@@ -23,3 +26,13 @@ spring:
           uri: lb://service-product
           predicates:
             - Path=/admin/product/**
+
+        - id: lock_test
+          uri: lb://service-item
+          predicates:
+            - Path=/lock/native
+
+        - id: web_all
+          uri: lb://web-all
+          predicates:
+            - Host=**.gmall.com

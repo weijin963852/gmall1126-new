@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>接受参数</title>
+</head>
+<body>
+    <form  action="http://localhost:7000/admin/product/test" method="post"  enctype="multipart/form-data">
+        username:<input type="text" name="username"/><br/>
+        password:<input type="password" name="password"><br/>
+        email:   <input type="text" name="email"/><br/>
+<!--        可接受多个文件-->
+        sfz:<input type="file" name="sfz" multiple/><br/>
+        头像:<input type="file" name="header"><br/>
+        爱好:<input type="checkbox" name="ah" value="篮球" >篮球
+            <input type="checkbox" name="ah" value="足球">足球
+            <input type="checkbox" name="ah" value="排球">排球<br/>
+        <input type="submit" value="提交">
+
+    </form>
+
+</body>
+</html>

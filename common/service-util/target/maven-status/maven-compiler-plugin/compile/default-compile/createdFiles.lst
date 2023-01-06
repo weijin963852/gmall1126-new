@@ -1,0 +1,7 @@
+com\atguigu\gmall\common\config\threadpool\AppThreadPoolAutoConfiguration.class
+com\atguigu\gmall\common\constant\RedisConst.class
+com\atguigu\gmall\common\config\Swagger2Config.class
+com\atguigu\gmall\common\config\threadpool\ThreadPoolPoperties.class
+com\atguigu\gmall\common\handler\GlobalExceptionHandler.class
+com\atguigu\gmall\common\annotation\EnableThreadPool.class
+com\atguigu\gmall\common\config\MybatisPlusConfig.class

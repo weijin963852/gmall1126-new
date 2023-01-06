@@ -1,0 +1,6 @@
+com\atguigu\gmall\item\ItemMainApplication.class
+com\atguigu\gmall\item\api\SkuDetailsController.class
+com\atguigu\gmall\item\service\impl\SkuDetailsItemServiceImpl.class
+com\atguigu\gmall\item\controller\ThreadPoolMinor.class
+com\atguigu\gmall\item\feign\SkuDetailsItemFeignClient.class
+com\atguigu\gmall\item\service\SkuDetailsItemService.class

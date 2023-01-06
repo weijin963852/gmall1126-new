@@ -14,4 +14,16 @@ spring:
     sender:
       type: web
 
+  redis:
+    host: 192.168.200.100
+    password: Lfy123456
+    port: 6379
 
+
+
+app:
+  minio:
+    address: http://192.168.200.100:9000
+    username: admin
+    password: admin123456
+    bucketName: gmall

@@ -1,0 +1,6 @@
+D:\daima\gmall-parent\service\service-item\src\main\java\com\atguigu\gmall\item\ItemMainApplication.java
+D:\daima\gmall-parent\service\service-item\src\main\java\com\atguigu\gmall\item\api\SkuDetailsController.java
+D:\daima\gmall-parent\service\service-item\src\main\java\com\atguigu\gmall\item\service\SkuDetailsItemService.java
+D:\daima\gmall-parent\service\service-item\src\main\java\com\atguigu\gmall\item\feign\SkuDetailsItemFeignClient.java
+D:\daima\gmall-parent\service\service-item\src\main\java\com\atguigu\gmall\item\controller\ThreadPoolMinor.java
+D:\daima\gmall-parent\service\service-item\src\main\java\com\atguigu\gmall\item\service\impl\SkuDetailsItemServiceImpl.java

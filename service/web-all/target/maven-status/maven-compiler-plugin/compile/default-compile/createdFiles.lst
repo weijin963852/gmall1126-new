@@ -1,0 +1,5 @@
+com\atguigu\gmall\web\controller\ItemController.class
+com\atguigu\gmall\web\controller\IndexController.class
+com\atguigu\gmall\web\feign\SkuDetailsFeignClient.class
+com\atguigu\gmall\web\feign\CategoryFeignClient.class
+com\atguigu\gmall\web\WebAllMainApplication.class
