@@ -17,4 +17,7 @@ public @interface GmallCache {
 
     String lockName() default "";
 
+    //过期时间
+    long dataTtl() default 60 * 30l;
+
 }

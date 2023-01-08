@@ -73,7 +73,10 @@ public class CacheAspect {
                     //7 加锁成功
                     //8 查询数据，准备回源
                data = joinPoint.proceed();
-                    cacheOpsService.saveCache(cacheKey, data);
+
+               // 获取注解上的过期时间
+                    Long dataTtl = determinTtl(joinPoint);
+                    cacheOpsService.saveCache(cacheKey, data,dataTtl);
                     return data;
                 } else {
                     Thread.sleep(1000);
@@ -92,6 +95,17 @@ public class CacheAspect {
         }
         //3 缓存中有数据
         return cacheData;
+    }
+
+    private Long determinTtl(ProceedingJoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+
+        Method method = signature.getMethod();
+
+        GmallCache methodAnnotation = method.getAnnotation(GmallCache.class);
+
+        long ttl = methodAnnotation.dataTtl();
+        return ttl;
     }
 
     private String determinLockName(ProceedingJoinPoint joinPoint) {

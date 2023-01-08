@@ -15,6 +15,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -28,7 +31,7 @@ public class CacheOpsServiceImpl implements CacheOpsService {
     @Autowired
     RedissonClient redissonClient;
 
-
+    ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(4);
     @Override
     public <T> T getCacheData(String cacheKey, Class<T> clz) {
         String s = redisTemplate.opsForValue().get(cacheKey);
@@ -95,8 +98,18 @@ public class CacheOpsServiceImpl implements CacheOpsService {
             //数据库查出来空值
             redisTemplate.opsForValue().set(cacheKey, SysRedisConst.NULL_VAL, SysRedisConst.NULL_VAL_TTL, TimeUnit.SECONDS);
         }
-        //查出来的数据非控制
+        //查出来的数据非空值
         redisTemplate.opsForValue().set(cacheKey, Jsons.toStr(data), SysRedisConst.VAL_TTL, TimeUnit.SECONDS);
+    }
+
+    @Override//根据业务传过期时间
+    public void saveCache(String cacheKey, Object data, Long dataTtl) {
+        if (data == null) {
+            //数据库查出来空值
+            redisTemplate.opsForValue().set(cacheKey, SysRedisConst.NULL_VAL, SysRedisConst.NULL_VAL_TTL, TimeUnit.SECONDS);
+        }
+        //查出来的数据非空值
+        redisTemplate.opsForValue().set(cacheKey, Jsons.toStr(data), dataTtl, TimeUnit.SECONDS);
     }
 
     /**
@@ -114,6 +127,16 @@ public class CacheOpsServiceImpl implements CacheOpsService {
     public void unLock(String lockName) {
         RLock lock = redissonClient.getLock(lockName);
         lock.unlock();
+    }
+
+    @Override
+    public void delay2Delete(String cacheKey) {
+        redisTemplate.delete(cacheKey);
+
+        scheduledThreadPool.schedule(()->{
+            redisTemplate.delete(cacheKey);
+        },10l,TimeUnit.SECONDS);
+
     }
 
 

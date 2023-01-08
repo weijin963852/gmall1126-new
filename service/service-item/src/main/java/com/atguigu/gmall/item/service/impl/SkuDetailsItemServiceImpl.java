@@ -234,7 +234,8 @@ public class SkuDetailsItemServiceImpl implements SkuDetailsItemService {
     @GmallCache(cacheKey = SysRedisConst.SKU_INFO_CACHE_PREFIX + "#{#params[0]}",
                 bloomName = SysRedisConst.BLOOM_SKUID,
                 bloomValue = "#{#params[0]}",
-                lockName = SysRedisConst.LOCK_SKU_DETAIL + "#{#params[0]}")
+                lockName = SysRedisConst.LOCK_SKU_DETAIL + "#{#params[0]}",
+                dataTtl = 60 * 60 * 24 * 7l)
     @Override
     public SkuDetailsTo getSkuDetails(Long skuId) {
         SkuDetailsTo skuDetailsTo = fromToNoCache(skuId);

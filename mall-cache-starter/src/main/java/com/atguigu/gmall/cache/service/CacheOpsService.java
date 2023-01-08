@@ -22,7 +22,14 @@ public interface CacheOpsService {
 
     void saveCache(String cacheKey, Object data);
 
+    void saveCache(String cacheKey, Object data,Long dataTtl);
+
     void unLock(Long  skuId);
 
     void unLock(String  lockName);
+
+    /**
+     * 延迟双删
+     * */
+    void delay2Delete(String cacheKey);
 }
