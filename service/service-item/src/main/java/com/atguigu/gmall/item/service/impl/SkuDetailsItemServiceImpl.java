@@ -7,7 +7,8 @@ import com.atguigu.gmall.common.constant.SysRedisConst;
 import com.atguigu.gmall.common.result.Result;
 import com.atguigu.gmall.common.util.Jsons;
 
-import com.atguigu.gmall.item.feign.SkuDetailsItemFeignClient;
+
+import com.atguigu.gmall.feign.product.SkuDetailsItemFeignClient;
 import com.atguigu.gmall.item.service.SkuDetailsItemService;
 import com.atguigu.gmall.model.product.SkuImage;
 import com.atguigu.gmall.model.product.SkuInfo;

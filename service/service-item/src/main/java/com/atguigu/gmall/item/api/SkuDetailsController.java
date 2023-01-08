@@ -1,7 +1,7 @@
 package com.atguigu.gmall.item.api;
 
 import com.atguigu.gmall.common.result.Result;
-import com.atguigu.gmall.item.feign.SkuDetailsItemFeignClient;
+
 import com.atguigu.gmall.item.service.SkuDetailsItemService;
 import com.atguigu.gmall.model.to.SkuDetailsTo;
 import org.springframework.beans.factory.annotation.Autowired;

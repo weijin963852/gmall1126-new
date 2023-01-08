@@ -10,7 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 
 @SpringCloudApplication
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.atguigu.gmall.feign.product")
 @EnableThreadPool
 @Import({Swagger2Config.class})
 @EnableAspectJAutoProxy

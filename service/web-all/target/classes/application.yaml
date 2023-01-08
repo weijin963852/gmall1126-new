@@ -5,6 +5,9 @@ spring:
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
+  main:
+    allow-bean-definition-overriding: true
+
 #  zipkin:
 #    base-url: http://192.168.200.100:9411/
 #    sender:
