@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @MapperScan("com.atguigu.gmall.product.mapper")
 @EnableThreadPool
 @EnableScheduling
+@EnableFeignClients(basePackages = {"com.atguigu.gmall.feign.search"})
 public class ProductMainApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProductMainApplication.class,args);

@@ -1,5 +1,6 @@
 package com.atguigu.gmall.product.service;
 
+import com.atguigu.gmall.model.list.Goods;
 import com.atguigu.gmall.model.product.SkuInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import io.swagger.models.auth.In;
@@ -18,4 +19,6 @@ public interface SkuInfoService extends IService<SkuInfo> {
     void onSale(Long skuId, int i);
 
     List<Long> selectFindAllId();
+
+    Goods getGoodsBySkuId(Long skuId);
 }

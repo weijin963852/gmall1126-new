@@ -2,6 +2,8 @@ package com.atguigu.gmall.product.controller;
 
 import com.atguigu.gmall.common.constant.SysRedisConst;
 import com.atguigu.gmall.common.result.Result;
+import com.atguigu.gmall.feign.search.SearchFeignClient;
+import com.atguigu.gmall.model.list.Goods;
 import com.atguigu.gmall.model.product.SkuAttrValue;
 import com.atguigu.gmall.model.product.SkuImage;
 import com.atguigu.gmall.model.product.SkuInfo;
@@ -41,6 +43,11 @@ public class SkuInfoController {
 
     @Autowired
     RedissonClient redissonClient;
+
+    @Autowired
+    SearchFeignClient searchFeignClient;
+
+
     /**
      * 分页查询skuinfo
      * admin/product/list/1/10
@@ -100,6 +107,9 @@ public class SkuInfoController {
     public Result cancelSale(@PathVariable("skuId")Long skuId){
 
         skuInfoService.getChangeSkuInfoIsSale(skuId,0);
+
+        Goods goods = skuInfoService.getGoodsBySkuId(skuId);
+        searchFeignClient.cancelGoods(goods);
         return Result.ok();
     }
 
@@ -110,6 +120,11 @@ public class SkuInfoController {
     public Result onSale(@PathVariable("skuId")Long skuId){
 
         skuInfoService.onSale(skuId,1);
+
+        //es中上架 TODO
+        // 1获取上架的Goods
+        Goods goods = skuInfoService.getGoodsBySkuId(skuId);
+        searchFeignClient.saveGoods(goods);
         return Result.ok();
     }
 }
