@@ -9,6 +9,7 @@ import com.atguigu.gmall.common.util.Jsons;
 
 
 import com.atguigu.gmall.feign.product.SkuDetailsItemFeignClient;
+import com.atguigu.gmall.feign.search.SearchFeignClient;
 import com.atguigu.gmall.item.service.SkuDetailsItemService;
 import com.atguigu.gmall.model.product.SkuImage;
 import com.atguigu.gmall.model.product.SkuInfo;
@@ -40,6 +41,9 @@ public class SkuDetailsItemServiceImpl implements SkuDetailsItemService {
 
     @Autowired
     CacheOpsService cacheOpsService;
+
+    @Autowired
+    SearchFeignClient   searchFeignClient;
 
     Map<String,SkuDetailsTo> map = new ConcurrentHashMap<>();
 
@@ -241,5 +245,10 @@ public class SkuDetailsItemServiceImpl implements SkuDetailsItemService {
     public SkuDetailsTo getSkuDetails(Long skuId) {
         SkuDetailsTo skuDetailsTo = fromToNoCache(skuId);
         return skuDetailsTo;
+    }
+
+    @Override
+    public void updateHotscore(Long skuId, Long score) {
+        searchFeignClient.updateHotScore(skuId,score);
     }
 }

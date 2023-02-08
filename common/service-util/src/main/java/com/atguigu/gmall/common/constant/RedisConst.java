@@ -38,4 +38,8 @@ public class RedisConst {
     public static final int SECKILL__TIMEOUT = 60 * 60 * 1;
 
 
+    public static final int PAGE_SIZE = 8;
+    public static final String UPDATE_HOT_SCORE = "sku:hotscore:";
+    public static final String LOGIN_TOKEN = "user:login:";
+    public static final String USERID_HEADER = "userid";
 }

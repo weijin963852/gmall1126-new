@@ -6,6 +6,10 @@ import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @SpringBootTest
 public class RedissonClientTest {
     @Autowired
@@ -16,4 +20,6 @@ public class RedissonClientTest {
         RLock lock = redissonClient.getLock("lock");
         System.out.println("lock = " + lock);
     }
+
+
 }
